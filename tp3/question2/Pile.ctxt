@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=Pile
-comment0.text=\r\n\ A\ remplacer\ en\ partie\ par\ votre\ classe\ Pile\ de\ la\ question\ 1.\r\n\ \r\n\ @author\ (votre\ nom)\r\n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\r\n
+comment0.text=\r\n\ A\ remplacer\ en\ partie\ par\ votre\ classe\ Pile\ de\ la\ question\ 1.\r\n\ \r\n\ @author\ (Ahmad\ Mouhamad\ -\ 6046f)\r\n\ @version\ (1.0)\r\n
 comment1.params=taille
 comment1.target=Pile(int)
+comment1.text=\r\n\ Constructeur\ par\ initialisation\r\n\ @param\ taille\ \:\ nombre\ d'\u00E9l\u00E9ments\ de\ la\ pile.\r\n
 comment10.params=o
 comment10.target=boolean\ equals(java.lang.Object)
 comment11.params=

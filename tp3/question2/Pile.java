@@ -6,69 +6,114 @@ import question1.PileVideException;
 /**
  * A remplacer en partie par votre classe Pile de la question 1.
  * 
- * @author (votre nom)
- * @version (un numÃ©ro de version ou une date)
+ * @author (Ahmad Mouhamad - 6046f)
+ * @version (1.0)
  */
 public class Pile implements PileI {
-
     private Object[] zone;
     private int ptr;
-
+    /**
+     * Constructeur par initialisation
+     * @param taille : nombre d'éléments de la pile.
+     */
     public Pile(int taille) {
-        // traiter le cas <=0
-        // a completer
+        if (taille <= 0){
+            taille = CAPACITE_PAR_DEFAUT;
+        }
+        this.zone = new Object[taille];
+        this.ptr = 0;
     }
-
+    
     public Pile() {
-        this(0);
+        this(PileI.CAPACITE_PAR_DEFAUT);
     }
-
+    
     public void empiler(Object o) throws PilePleineException {
-        // a completer
+        if (estPleine())
+            throw new PilePleineException();
+        this.zone[this.ptr] =o;
+        this.ptr++;
     }
-
+    
     public Object depiler() throws PileVideException {
-        // a completer
-        return null;
+        if (estVide())
+            throw new PileVideException();
+        this.ptr--;
+        return this.zone[ptr];
     }
-
+    
     public Object sommet() throws PileVideException {
-        // a completer
-        return null;
-    }
 
+        if (estVide())
+            throw new PileVideException();
+
+        return this.zone[ptr-1];
+    }
+    
     public int capacite() {
-        // a completer
-        return -1;
+        return this.zone.length;
     }
-
-    public int taille() {
-        // a completer
-        return -1;
+    
+    public int taille() { 
+        if(estVide()){
+            ptr = 0;
+        }
+        return this.ptr;
     }
-
+    
     public boolean estVide() {
-        // a completer
-        return false;
+        return this.ptr == 0;
     }
-
+    
     public boolean estPleine() {
-        // a completer
+        return this.ptr == this.zone.length;
+    }
+    
+   
+ public boolean equals(Object o) {
+
+        if( this== o ){
+            return true;
+        }      
+        if(!(o instanceof Pile)){
+            return false;
+        }
+        Pile p1 = (Pile)o;
+
+        if (p1.taille() == this.taille() && p1.capacite() == this.capacite()){
+            boolean estEgale = false;
+            for(int i=zone.length - 1; i >=0; i--){
+                Object tmp = zone[i];
+                boolean egal = false;
+                for(int j = zone.length-1; j>=0; j--){
+                    if(tmp == p1.zone[i]){
+                        egal = true;
+                    }       
+                }
+                if(egal){
+                    estEgale = true;
+                }else{
+                    return false;
+                }
+            }
+            return true;
+        }                
         return false;
     }
 
-    public boolean equals(Object o) {
-        // a completer
-        return false;
-    }
-
-    // fonction fournie
     public int hashCode() {
         return toString().hashCode();
     }
 
     public String toString() {
-        // a completer
-        return null;
+        StringBuffer sb = new StringBuffer("[");
+        for (int i = ptr - 1; i >= 0; i--) {
+            sb.append(zone[i].toString());
+            if (i > 0)
+                sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
     }
+	
 }

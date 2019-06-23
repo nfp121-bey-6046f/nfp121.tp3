@@ -19,8 +19,10 @@ public class UneUtilisation {
 		try {
 			p1.empiler(new PolygoneRegulier(4,100));
 			// ....
-			String s = (String) p1.depiler(); // vérifiez qu'une exception se
-												// produit
+			//String s = (String) p1.depiler(); // vérifiez qu'une exception se
+					if (p1.estVide())
+            throw new PileVideException();
+        p1.depiler();							// produit
 		} catch (Exception e) {
 			e.printStackTrace();
 		} // catch
